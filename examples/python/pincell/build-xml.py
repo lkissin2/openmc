@@ -1,3 +1,5 @@
+import os
+import sys
 import openmc
 
 ###############################################################################
@@ -19,7 +21,7 @@ particles = 1000
 uo2 = openmc.Material(material_id=1, name='UO2 fuel at 2.4% wt enrichment')
 uo2.set_density('g/cm3', 10.29769)
 uo2.add_element('U', 1., enrichment=2.4)
-uo2.add_element('O', 2.)
+# uo2.add_element('O', 2.)
 
 helium = openmc.Material(material_id=2, name='Helium for gap')
 helium.set_density('g/cm3', 0.001598)
@@ -36,7 +38,7 @@ borated_water = openmc.Material(material_id=4, name='Borated water')
 borated_water.set_density('g/cm3', 0.740582)
 borated_water.add_element('B', 4.0e-5)
 borated_water.add_element('H', 5.0e-2)
-borated_water.add_element('O', 2.4e-2)
+# borated_water.add_element('O', 2.4e-2)
 borated_water.add_s_alpha_beta('c_H_in_H2O')
 
 # Instantiate a Materials collection and export to XML
