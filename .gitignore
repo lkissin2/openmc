@@ -107,5 +107,8 @@ htmlcov
 #Dynamic Library
 *.dylib
 
-#Louis's notes
+#Louis's notes directory
 notes/
+
+#Louis's njoy directory
+njoy/
