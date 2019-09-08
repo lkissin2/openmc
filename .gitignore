@@ -106,3 +106,6 @@ htmlcov
 
 #Dynamic Library
 *.dylib
+
+#Louis's notes
+notes/
