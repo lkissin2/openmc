@@ -99,6 +99,8 @@ def test_mesh2d(rlat2):
     assert np.array_equal(mesh2.dimension, (9, 9))
     assert np.array_equal(mesh2.lower_left, rlat2.lower_left)
     assert np.array_equal(mesh2.upper_right, rlat2.lower_left + width)
+    ########### ADDED TO TEST IF I CAN CHANGE THINGS ON COVERALLS 2019.09.08
+    assert mesh2._width == mesh2.width
 
 
 def test_mesh3d(rlat3):
