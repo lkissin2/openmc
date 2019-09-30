@@ -1,15 +1,13 @@
 import numpy as np
-import openmc
+# import openmc
+from openmc import _utils
 import pytest
-# 
-# import sys
-# import os
 
-import _utils
+import os
+
+# import _utils
 
 print('hello')
-
-
-# openmc.Download('git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell')
-
+teapot = _utils.download('https://tinyurl.com/y4mcmc3u')
+assert os.path.getsize('jig') == os.path.getsize('y4mcmc3u')
 print('world')
