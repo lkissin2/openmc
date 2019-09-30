@@ -5,7 +5,7 @@ import pytest
 import os
 
 print('hello')
-plug1 = _utils.download('https://tinyurl.com/y4mcmc3u')
-plug2 = _utils.download('https://tinyurl.com/y4mcmc3u')
-assert os.path.getsize('plug1') == os.path.getsize('plug2')
+_utils.download('https://media.gettyimages.com/photos/flamingo-picture-id957054810?s=2048x2048')
+_utils.download('https://tinyurl.com/y5cmtka3')
+assert os.path.getsize('y5cmtka3') == os.path.getsize('flamingo-picture-id957054810')
 print('world')
