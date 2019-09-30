@@ -1,13 +1,11 @@
 import numpy as np
-# import openmc
 from openmc import _utils
 import pytest
 
 import os
 
-# import _utils
-
 print('hello')
-teapot = _utils.download('https://tinyurl.com/y4mcmc3u')
-assert os.path.getsize('jig') == os.path.getsize('y4mcmc3u')
+plug1 = _utils.download('https://tinyurl.com/y4mcmc3u')
+plug2 = _utils.download('https://tinyurl.com/y4mcmc3u')
+assert os.path.getsize('plug1') == os.path.getsize('plug2')
 print('world')
