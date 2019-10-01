@@ -7,14 +7,16 @@ import os
 
 @pytest.fixture(scope='module')
 def download_photos():
-    """use _utils download() function to download the same picture three times,
+    """use _utils download() function to download the same picture four times,
        twice to get unique names, and a third time to use the already downloaded
-       block of code"""
+       block of code, and a fourth time to use the checksum block"""
     _utils.download('https://media.gettyimages.com/photos/' +
                     'flamingo-picture-id957054810?s=2048x2048',
                      as_browser = True)
     _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True)
     _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True)
+    _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True,
+                    checksum = 'not none')
 
 
 def test_photos(download_photos):
