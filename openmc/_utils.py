@@ -52,9 +52,9 @@ def download(url, checksum=None, as_browser=False, **kwargs):
                 break
             fh.write(chunk)
             downloaded += len(chunk)
-            # status = '{:10}  [{:3.2f}%]'.format(
-            #     downloaded, downloaded * 100. / file_size)
-            # print(status + '\b'*len(status), end='')
+            status = '{:10}  [{:3.2f}%]'.format(
+                downloaded, downloaded * 100. / file_size)
+            print(status + '\b'*len(status), end='')
         print('')
 
     if checksum is not None:
