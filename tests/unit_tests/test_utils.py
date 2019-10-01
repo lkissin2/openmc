@@ -9,3 +9,6 @@ _utils.download('https://media.gettyimages.com/photos/flamingo-picture-id9570548
 _utils.download('https://tinyurl.com/y5cmtka3')
 assert os.path.getsize('y5cmtka3') == os.path.getsize('flamingo-picture-id957054810')
 print('world')
+os.remove('y5cmtka3')
+os.remove('flamingo-picture-id957054810')
+print('!')
