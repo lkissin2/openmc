@@ -11,17 +11,15 @@ def download_photos():
        block of code, and a fourth time to use the checksum block"""
     _utils.download('https://media.gettyimages.com/photos/' +
                     'flamingo-picture-id957054810?s=2048x2048')
+    _utils.download('https://tinyurl.com/y5cmtka3')
     _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True)
-    _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True)
 
 
-# @pytest.fixture(scope='module')
-# def get_checksum_error():
-#     """use download() in such a way that will test the checksum error line"""
-#     _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True,
-#                     checksum = 'not none')
-#     assert True
-
+@pytest.fixture(scope='module')
+def get_checksum_error():
+    """use download() in such a way that will test the checksum error line"""
+    _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True,
+                    checksum = '9ab7330c8fac75e18874570f582aec56')
 
 
 def test_photos(download_photos):
@@ -30,7 +28,8 @@ def test_photos(download_photos):
     os.remove('y5cmtka3')
     os.remove('flamingo-picture-id957054810')
 
-# def test_error(get_checksum_error):
-#     _utils.download('https://tinyurl.com/y5cmtka3', as_browser = True,
-#                     checksum = 'not none')
-#     os.remove('y5cmtka3')
+def test_error(get_checksum_error):
+    _utils.download('https://tinyurl.com/y5cmtka3',
+                    checksum = 'not none')
+    # assert True
+    os.remove('y5cmtka3')
