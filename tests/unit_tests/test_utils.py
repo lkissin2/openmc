@@ -21,7 +21,7 @@ def get_checksum_error():
     """use download() in such a way that will test the checksum error line"""
     with pytest.raises(OSError):
         _utils.download('https://tinyurl.com/y4t38ugb', as_browser = True,
-                        checksum = '9ab7330c8fac75e18874570f582aec56')
+                        checksum = 'not none')
 
 
 def test_photos(download_photos):
@@ -31,11 +31,4 @@ def test_photos(download_photos):
     os.remove('small.jpg')
 
 def test_error(get_checksum_error):
-    # with pytest.raises(OSError, 'MD5 checksum for y4t38ugb does not' +
-    #                                       'match. If this is your first time' +
-    #                                       'receiving this message, please re-run the script. Otherwise, please contact OpenMC developers by emailing openmc-users@googlegroups.com.'):
-    # # with pytest.raises(OSError):
-    #     _utils.download('https://tinyurl.com/y4t38ugb',
-    #                     checksum = 'not none')
-    # assert True
     os.remove('y4t38ugb')
