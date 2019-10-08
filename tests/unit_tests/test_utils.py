@@ -7,9 +7,9 @@ import pytest
 
 
 # @pytest.fixture(scope="module")
+# def download_photos():
 @pytest.fixture()
 def download_photos(run_in_tmpdir):
-# def download_photos():
     """use _utils download() function to download the same picture four times,
        twice to get unique names, & a third time to use the already downloaded
        block of code, and a fourth time to use the checksum block"""
@@ -22,9 +22,9 @@ def download_photos(run_in_tmpdir):
 
 
 # @pytest.fixture(scope="module")
+# def get_checksum_error():
 @pytest.fixture()
 def get_checksum_error(run_in_tmpdir):
-# def get_checksum_error():
     """use download() in such a way that will test the checksum error line"""
     phrase = "MD5 checksum for y4t38ugb does not match. If this is your "
     "first time receiving this message, please re-run the script. "
