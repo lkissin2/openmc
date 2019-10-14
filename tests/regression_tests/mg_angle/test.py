@@ -14,7 +14,7 @@ def create_library():
 
     mg_cross_sections_file = openmc.MGXSLibrary(groups)
 
-    # Make the base, isotropic data
+    # Make the base, angle-dependent data
     nu = [2.50, 2.50]
     fiss = np.array([0.002817, 0.097])
     capture = [0.008708, 0.02518]
@@ -24,6 +24,7 @@ def create_library():
          [[0.00000, 0.00000], [0.424100, 0.05439000]]])
     total = [0.33588, 0.54628]
     chi = [1., 0.]
+    num_azimuthal = 2
 
     mat_1 = openmc.XSdata('mat_1', groups)
     mat_1.order = 1
@@ -32,6 +33,7 @@ def create_library():
     mat_1.set_scatter_matrix(scatter)
     mat_1.set_total(total)
     mat_1.set_chi(chi)
+    mat_1.convert_representation('angle', num_azimuthal=num_azimuthal)
     mg_cross_sections_file.add_xsdata(mat_1)
 
     # Make a version of mat-1 which has a tabular representation of the
