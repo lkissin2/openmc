@@ -25,6 +25,7 @@ def create_library():
     total = [0.33588, 0.54628]
     chi = [1., 0.]
     num_azimuthal = 2
+    num_polar = 2
 
     mat_1 = openmc.XSdata('mat_1', groups)
     mat_1.order = 1
@@ -33,7 +34,8 @@ def create_library():
     mat_1.set_scatter_matrix(scatter)
     mat_1.set_total(total)
     mat_1.set_chi(chi)
-    mat_1.convert_representation('angle', num_azimuthal=num_azimuthal)
+    mat_1.convert_representation('angle', num_azimuthal=num_azimuthal,
+                                 num_polar=num_polar)
     mg_cross_sections_file.add_xsdata(mat_1)
 
     # Make a version of mat-1 which has a tabular representation of the
