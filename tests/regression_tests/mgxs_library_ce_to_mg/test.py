@@ -17,7 +17,14 @@ class MGXSTestHarness(PyAPITestHarness):
         energy_groups = openmc.mgxs.EnergyGroups(group_edges=[0, 0.625, 20.e6])
 
         # Initialize MGXS Library for a few cross section types
+
+
         self.mgxs_lib = openmc.mgxs.Library(self._model.geometry)
+        # 2019-11-04 ADD THIS TO TEST LINE 300 IN OPENMC/MGXS.PY
+
+        self.mgxs_lib.num_polar = 3
+        self.mgxs_lib.num_azimuthal = 3
+        
         self.mgxs_lib.by_nuclide = False
         self.mgxs_lib.mgxs_types = ['total', 'absorption', 'nu-fission matrix',
                                     'nu-scatter matrix', 'multiplicity matrix']
