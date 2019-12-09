@@ -1,4 +1,5 @@
 import os
+import filecmp
 
 from openmc import _utils
 import pytest
@@ -7,8 +8,7 @@ import pytest
 def download_photos(run_in_tmpdir):
     """use _utils download() function to download the same picture four times,
        twice to get unique names, & a third time to use the already downloaded
-       block of code, and a fourth time to use the checksum block"""
-
+       block of code"""
     _utils.download("https://i.ibb.co/HhKFc8x/small.jpg")
     _utils.download("https://tinyurl.com/y4t38ugb")
     _utils.download("https://tinyurl.com/y4t38ugb", as_browser=True)
@@ -17,19 +17,11 @@ def download_photos(run_in_tmpdir):
 @pytest.fixture()
 def get_checksum_error(run_in_tmpdir):
     """use download() in such a way that will test the checksum error line"""
-    phrase = "MD5 checksum for y4t38ugb does not match. If this is your "
-    "first time receiving this message, please re-run the script. "
-    "Otherwise, please contact OpenMC developers by "
-    "emailing openmc-users@googlegroups.com."
+    phrase = "MD5 checksum for y4t38ugb"
     with pytest.raises(OSError, match=phrase):
         _utils.download("https://tinyurl.com/y4t38ugb", as_browser=True,
                         checksum="not none")
 
 
 def test_photos(download_photos):
-    assert os.path.getsize("small.jpg") == \
-           os.path.getsize("y4t38ugb")
-
-
-def test_error(get_checksum_error):
-    print("hi")
+    assert filecmp.cmp("small.jpg", "y4t38ugb")
